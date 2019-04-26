@@ -15,7 +15,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.CategoryDAOImpl;
+import com.ecomm.dao.SupplierDAO;
+import com.ecomm.dao.SupplierDAOImpl;
 import com.ecomm.model.Category;
+import com.ecomm.model.Supplier;
 
 @Configuration
 @EnableTransactionManagement
@@ -47,6 +50,7 @@ public SessionFactory getSessionFactory()
 	factory.addProperties(hibernateprop);
 	
 	factory.addAnnotatedClass(Category.class);
+	factory.addAnnotatedClass(Supplier.class);
 	
 	System.out.println(">>>>>>SessionFactory Object created<<<<<<");
 
@@ -61,7 +65,14 @@ public HibernateTransactionManager getTransactionManager(SessionFactory sessionF
 }
 @Bean(name="categoryDAO") 
 		public CategoryDAO getCategoryDAO() {
+	System.out.println("Category DAO Implementation");
 			return new CategoryDAOImpl();
 		
 		}
+@Bean(name="supplierDAO") 
+public SupplierDAO getSupplierDAO() {
+	System.out.println("Supplier DAO Implementation");
+	return new SupplierDAOImpl();
+
+}
 	}
