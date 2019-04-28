@@ -19,7 +19,7 @@ public class SupplierController {
 	@Autowired
 	SupplierDAO supplierDAO;
 
-	@RequestMapping("/Supplier")
+	@RequestMapping(value="/Supplier")
 	public String displaySupplier(Model m) {
 		List<Supplier> listSuppliers = supplierDAO.getSuppliers();
 		m.addAttribute("listSuppliers", listSuppliers);
@@ -32,10 +32,9 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "/addSupplier", method = RequestMethod.POST)
-	public String addSupplier(@RequestParam("supid") String supid,@RequestParam("supname") String supname, @RequestParam("supaddr") String supaddr,
+	public String addSupplier(@RequestParam("supname") String supname, @RequestParam("supaddr") String supaddr,
 			Model m) {
 		Supplier supplier = new Supplier();
-		supplier.setSupplierName(supid);
 		supplier.setSupplierName(supname);
 		supplier.setSupplierAddress(supaddr);
 

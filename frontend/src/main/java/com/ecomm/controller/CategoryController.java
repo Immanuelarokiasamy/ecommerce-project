@@ -19,7 +19,7 @@ public class CategoryController {
 	CategoryDAO categoryDAO;
 
 
-	@RequestMapping("/Category")
+	@RequestMapping(value="/Category")
 	public String displayCategory(Model m) {
 		List<Category> listCategories = categoryDAO.getCategories();
 		m.addAttribute("listCategories", listCategories);
@@ -31,21 +31,19 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/addCategory", method = RequestMethod.POST)
-	public String addCategory(@RequestParam("catid") String catid,@RequestParam("catname") String catname, @RequestParam("catdesc") String catdesc,
+	public String addCategory(@RequestParam("catname") String catname, @RequestParam("catdesc") String catdesc,
 			Model m) {
 		Category category = new Category();
-		category.setCategoryName(catid);
 		category.setCategoryName(catname);
 		category.setCategoryDesc(catdesc);
-
-		categoryDAO.addCategory(category);
+        categoryDAO.addCategory(category);
 
 		List<Category> listCategories = categoryDAO.getCategories();
 		m.addAttribute("listCategories", listCategories);
 		return "Category";
 	}
 
-	@RequestMapping("/deleteCategory/{categoryId}")
+	@RequestMapping(value="/deleteCategory/{categoryId}")
 	public String deleteCategory(@PathVariable("categoryId") int categoryId,Model m)
 	{
 		Category category=categoryDAO.getCategory(categoryId);
@@ -57,7 +55,7 @@ public class CategoryController {
 		return "Category";
 	}
 
-	@RequestMapping("/updateCategory/{categoryId}")
+	@RequestMapping(value="/updateCategory/{categoryId}")
 	public String updateCategory(@PathVariable("categoryId") int categoryId,Model m)
 	{
 		Category category=categoryDAO.getCategory(categoryId);
@@ -71,12 +69,12 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value="/updateCategoryDB",method=RequestMethod.POST)
-	public String updateCategoryDatabase(@RequestParam("catid") int catId,@RequestParam("catname") String catName,
-			@RequestParam("catdesc") String catDesc,Model m)
+	public String updateCategoryDatabase(@RequestParam("catid") int catid,@RequestParam("catname") String catname,
+			@RequestParam("catdesc") String catdesc,Model m)
 	{
-		Category category=categoryDAO.getCategory(catId);
-		category.setCategoryName(catName);
-		category.setCategoryDesc(catDesc);
+		Category category=categoryDAO.getCategory(catid);
+		category.setCategoryName(catname);
+		category.setCategoryDesc(catdesc);
 		
 		categoryDAO.updateCategory(category);
 		

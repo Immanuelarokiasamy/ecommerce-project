@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstarp.min.js"></script>
 <title>ManageSupplierPage</title>
 </head>
 <body>
-<h3>Add Supplier</h3>
-<form method="post" action="addSupplier">
-<table>
-<tr>
-<td>Supplier Id</td>
-<td><input name="supid"/></td>
-</tr>
+<%@ include file="Header.jsp"%>
+<h4>Add Supplier</h4>
+<form method="post" action="<c:url value="/addSupplier"/>">
+<table class="table table-hover">
 <tr>
 <td>Supplier Name</td>
 <td><input name="supname"/></td>
@@ -24,12 +25,13 @@
 </tr>
 <tr>
 <td colspan = "2">
-<input type="submit" value="ADD"/>
+<center><input type="submit" class="btn btn-success btn-xs" value="ADD"/>
+<input type="reset" class="btn btn-danger btn-xs" value="RESET"/></center>
 </td>
 </tr>
 </table>
-<table border=1>
-<tr>
+<table class="table table-bordered">
+<tr style="background-color:black; color:white;">
 <td>Supplier ID</td>
 <td>Supplier Name</td>
 <td>Supplier Address</td>
@@ -41,8 +43,8 @@
 <td>${supplier.supplierName}</td>
 <td>${supplier.supplierAddress}</td>
 <td>
-<a href="<c:url value="/updateSupplier/${supplier.supplierId}"/>">UPDATE</a>/
-<a href="<c:url value="/deleteSupplier/${supplier.supplierId}"/>">DELETE</a>
+<a href="<c:url value="/updateSupplier/${supplier.supplierId}"/>" class="btn btn-success btn-xs">UPDATE</a>
+<a href="<c:url value="/deleteSupplier/${supplier.supplierId}"/>" class="btn btn-danger btn-xs">DELETE</a>
 </td>
 </tr>
 </c:forEach>

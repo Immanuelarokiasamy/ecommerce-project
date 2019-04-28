@@ -5,16 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstarp.min.js"></script>
 <title>ManageCategoryPage</title>
 </head>
 <body>
-<h3>Add Category</h3>
-<form method="post" action="addCategory">
-<table>
-<tr>
-<td>Category Id</td>
-<td><input name="catid"/></td>
-</tr>
+<%@ include file="Header.jsp"%>
+<h4>Add Category</h4>
+<form method="post" action="<c:url value="/addCategory"/>">
+<table class="table table-hover">
 <tr>
 <td>Category Name</td>
 <td><input name="catname"/></td>
@@ -25,15 +26,16 @@
 </tr>
 <tr>
 <td colspan = "2">
-<input type="submit" value="ADD"/>
+<center><input type="submit" class="btn btn-success btn-xs" value="ADD"/>
+<input type="reset" class="btn btn-danger btn-xs" value="RESET"/></center>
 </td>
 </tr>
 </table>
-<table border=1>
-<tr>
+<table class="table table-bordered">
+<tr style="background-color:black; color:white;">
 <td>Category ID</td>
 <td>Category Name</td>
-<td>Category Desc</td>
+<td>Category Description</td>
 <td>Operation</td>
 </tr>
 <c:forEach items="${listCategories}" var="category">
@@ -42,8 +44,8 @@
 <td>${category.categoryName}</td>
 <td>${category.categoryDesc}</td>
 <td>
-<a href="<c:url value="/updateCategory/${category.categoryId}"/>">UPDATE</a>/
-<a href="<c:url value="/deleteCategory/${category.categoryId}"/>">DELETE</a>
+<a href="<c:url value="/updateCategory/${category.categoryId}"/>" class="btn btn-success btn-xs">UPDATE</a>
+<a href="<c:url value="/deleteCategory/${category.categoryId}"/>" class="btn btn-danger btn-xs">DELETE</a>
 </td>
 </tr>
 </c:forEach>
