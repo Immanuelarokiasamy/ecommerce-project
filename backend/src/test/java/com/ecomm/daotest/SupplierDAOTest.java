@@ -68,7 +68,7 @@ public class SupplierDAOTest {
 	@Test
 	public void listSupplierTest()
 	{
-		List<Supplier> listSuppliers=supplierDAO.getSupplier();
+		List<Supplier> listSuppliers=supplierDAO.getSuppliers();
 		assertNotNull("No Suppliers",listSuppliers);
 		
 		for(Supplier supplier:listSuppliers)
