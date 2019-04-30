@@ -30,7 +30,8 @@
 </td>
 </tr>
 </table>
-<table class="table table-bordered">
+<div class="container">
+<table class="table table-bordered" style="border-width:3px;border-color:black;">
 <tr style="background-color:black; color:white;">
 <td>Supplier ID</td>
 <td>Supplier Name</td>
@@ -49,6 +50,7 @@
 </tr>
 </c:forEach>
 </table>
+</div>
 </form>
 </body>
 </html>

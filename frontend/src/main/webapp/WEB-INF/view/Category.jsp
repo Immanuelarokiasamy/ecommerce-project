@@ -31,6 +31,7 @@
 </td>
 </tr>
 </table>
+<div class="container">
 <table class="table table-bordered">
 <tr style="background-color:black; color:white;">
 <td>Category ID</td>
@@ -50,6 +51,7 @@
 </tr>
 </c:forEach>
 </table>
+</div>
 </form>
 </body>
 </html>

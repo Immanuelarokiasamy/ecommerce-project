@@ -13,7 +13,7 @@
 <body>
 <%@ include file="Header.jsp"%>
 <h4>Update Supplier</h4>
-<form method="post" action="<c:url value="/updateSupplierDB"/>">
+<form method="post" action="<c:url value="/updateSupplierDB/${supplier.supplierId}"/>">
 <table class="table table-hover">
 <tr>
 <td>Supplier Name</td>
@@ -30,6 +30,7 @@
 </td>
 </tr>
 </table>
+<div class="container">
 <table class="table table-bordered">
 <tr style="background-color:black; color:white;">
 <td>Supplier ID</td>
@@ -37,7 +38,7 @@
 <td>Supplier Address</td>
 <td>Operation</td>
 </tr>
-<c:forEach items="${listCategories}" var="category">
+<c:forEach items="${listSuppliers}" var="supplier">
 <tr>
 <td>${supplier.supplierId}</td>
 <td>${supplier.supplierName}</td>
@@ -49,6 +50,7 @@
 </tr>
 </c:forEach>
 </table>
+</div>
 </form>
 </body>
 </html>

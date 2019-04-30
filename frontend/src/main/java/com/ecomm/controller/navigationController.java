@@ -9,4 +9,8 @@ public class navigationController {
 	public String displayHome() {
 	return "index";
 	}
+@RequestMapping(value="/frontend") 
+public String displayHom() {
+return "index";
+}
 }

@@ -70,8 +70,8 @@ public class SupplierController {
 		return "updateSupplier";
 	}
 	
-	@RequestMapping(value="/updateSupplierDB",method=RequestMethod.POST)
-	public String updateSupplierDatabase(@RequestParam("supid") int supid,@RequestParam("supname") String supname,
+	@RequestMapping(value="/updateSupplierDB/{supplierId}",method=RequestMethod.POST)
+	public String updateSupplierDatabase(@PathVariable("supplierId") int supid,@RequestParam("supname") String supname,
 			@RequestParam("supaddr") String supaddr,Model m)
 	{
 		Supplier supplier=supplierDAO.getSupplier(supid);
