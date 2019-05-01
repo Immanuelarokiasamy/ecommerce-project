@@ -30,6 +30,14 @@ public class ProductController {
 	@Autowired
 	SupplierDAO supplierDAO;
 
+	@RequestMapping(value="/ProductDisplay")
+	public String dispProduct(Model m) {
+		List<Product> listProducts = productDAO.getProducts();
+		m.addAttribute("listProducts", listProducts);
+
+		return "ProductDisplay";
+	}
+	
     @RequestMapping(value="/Product")
 	public String displayProduct(Model m) {
 		List<Product> listProducts = productDAO.getProducts();
@@ -58,12 +66,12 @@ public class ProductController {
 		product.setSupplierId(supid);
         productDAO.addProduct(product);
         
-        Product product1=new Product();
-		m.addAttribute(product1);
-    	String imagePath="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images";
-		imagePath=imagePath+String.valueOf(product1.getProductId())+".jpg";
-	    File image=new File(imagePath);
-		
+        /*Product product1=new Product();
+		m.addAttribute(product1);*/
+    	String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
+		path=path+String.valueOf(product.getProductId())+".jpg";
+	    
+		File image=new File(path);
 		if(!pimage.isEmpty())
 		{
 

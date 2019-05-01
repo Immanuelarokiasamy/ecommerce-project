@@ -16,7 +16,7 @@
 <body>
 <%@ include file="Header.jsp"%>
 <h4>Add Product</h4>
-<form method="post" action="<c:url value="/addProduct"/>">
+<form method="post" enctype="multipart/form-data" action="<c:url value="/addProduct"/>">
 <table class="table table-hover">
 <tr>
 <td>Select Category:</td>
@@ -52,6 +52,15 @@
 <td>Product Stock</td>
 <td><input name="prostock"/></td>
 </tr>
+
+<tr>
+<td>Product Image:
+</td>
+<td>
+<input type="file" accept="/resources/images/*" name="pimage"/>
+</td>
+</tr>
+
 <tr>
 <td colspan = "2">
 <center><input type="submit" class="btn btn-success btn-xs" value="ADD"/>
@@ -69,6 +78,7 @@
 <td>Product Stock</td>
 <td>Category ID</td>
 <td>Supplier ID</td>
+<td>Product Image</td>
 <td>Operation</td>
 </tr>
 <c:forEach items="${listProducts}" var="product">
@@ -80,6 +90,7 @@
 <td>${product.stock}</td>
 <td>${product.categoryId}</td>
 <td>${product.supplierId}</td>
+<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="75px" height="75px"></td>
 <td>
 <a href="<c:url value="/updateProduct/${product.productId}"/>" class="btn btn-success btn-xs">UPDATE</a>
 <a href="<c:url value="/deleteProduct/${product.productId}"/>" class="btn btn-danger btn-xs">DELETE</a>

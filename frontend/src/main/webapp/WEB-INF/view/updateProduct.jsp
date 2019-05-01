@@ -69,6 +69,7 @@
 <td>Product Stock</td>
 <td>Category ID</td>
 <td>Supplier ID</td>
+<td>Product Image</td>
 <td>Operation</td>
 </tr>
 <c:forEach items="${listProducts}" var="product">
@@ -80,6 +81,7 @@
 <td>${product.stock}</td>
 <td>${product.categoryId}</td>
 <td>${product.supplierId}</td>
+<td><img src="/resources/images/${product.productId}.jpg"></td>
 <td>
 <a href="<c:url value="/updateProduct/${product.productId}"/>" class="btn btn-success btn-xs">UPDATE</a>
 <a href="<c:url value="/deleteProduct/${product.productId}"/>" class="btn btn-danger btn-xs">DELETE</a>
