@@ -18,7 +18,7 @@ private String productName;
 private String productDesc;
 private int categoryId;
 private int supplierId;
-private int price;
+private double price;
 private int stock;
 @Transient 
 private MultipartStream pimage;
@@ -58,16 +58,16 @@ public int getSupplierId() {
 public void setSupplierId(int supplierId) {
 	this.supplierId = supplierId;
 }
-public int getPrice() {
-	return price;
-}
-public void setPrice(int price) {
-	this.price = price;
-}
 public int getStock() {
 	return stock;
 }
 public void setStock(int stock) {
 	this.stock = stock;
+}
+public double getPrice() {
+	return price;
+}
+public void setPrice(double price) {
+	this.price = price;
 }
 }

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ecomm.model.Product;
-import com.ecomm.model.Supplier;
+
 @Repository("productDAO")
 @Transactional
 public class ProductDAOImpl implements ProductDAO {
