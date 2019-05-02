@@ -20,7 +20,8 @@
 <table class="table table-hover">
 <tr>
 <td>Select Category:</td>
-<td><select id="sel" name="categoryId">
+<td><select required id="sel" name="categoryId">
+<option value="" disabled selected>Select</option>
 <c:forEach items="${listCategories}" var="category">
 <option value="${category.categoryId}">${category.categoryName}</option>
 </c:forEach>
@@ -29,7 +30,8 @@
 </tr>
 <tr>
 <td>Select Supplier:</td>
-<td><select id="sel" name="supplierId">
+<td><select required id="sel" name="supplierId">
+<option value="" disabled selected>Select</option>
 <c:forEach items="${listSuppliers}" var="supplier">
 <option value="${supplier.supplierId}">${supplier.supplierName}</option>
 </c:forEach>
@@ -69,7 +71,7 @@
 </tr>
 </table>
 <div class="container">
-<table class="table table-bordered">
+<table class="table table-bordered" style="border-width:3px;border-color:black;">
 <tr style="background-color:black; color:white;">
 <td>Product ID</td>
 <td>Product Name</td>

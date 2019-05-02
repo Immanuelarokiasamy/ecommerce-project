@@ -11,16 +11,22 @@
 <title>Product</title>
 </head>
 <body>
-<%@ include file="Header.jsp" %>
+<%@ include file="Header.jsp"%>
 <div class="container">
 <table>
 <tr>
 <c:forEach items="${listProducts}" var="product">
 <td>
-<img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="200px" height="200px">
-</td>
-<td>
-Stock:${product.stock}
+<c:choose>
+  <c:when test="${product.stock>0}">
+    <a href="<c:url value="/ProductDesc/${product.productId}"/>"><img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" style="width:200px; height:200px;"></a>
+ Stock:${product.stock}
+  </c:when>
+  <c:otherwise>
+  <img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" style="width:200px; height:200px;">
+ <font color="red">Out of Stock</font>
+  </c:otherwise>
+</c:choose>
 </td>
 </c:forEach>
 </tr>

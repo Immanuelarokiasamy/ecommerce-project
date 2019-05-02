@@ -38,6 +38,15 @@ public class ProductController {
 		return "ProductDisplay";
 	}
 	
+	@RequestMapping(value="/ProductDesc/{productId}")
+	public String productDesc(@PathVariable("productId") int proid,Model m) {
+		Product product=productDAO.getProduct(proid);
+		List<Product> listProducts = productDAO.getProducts();
+		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("product",product);
+	    return "ProductDesc";
+	}
+	
     @RequestMapping(value="/Product")
 	public String displayProduct(Model m) {
 		List<Product> listProducts = productDAO.getProducts();
@@ -55,7 +64,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String addProduct(@RequestParam("proname") String proname, @RequestParam("prodesc") String prodesc,
-			@RequestParam("proprice") int proprice,@RequestParam("prostock") int prostock,
+			@RequestParam("proprice") double proprice,@RequestParam("prostock") int prostock,
 			@RequestParam("categoryId") int catid,@RequestParam("supplierId") int supid,@RequestParam("pimage") MultipartFile pimage,Model m) {
 		Product product=new Product();
 		product.setProductName(proname);
@@ -64,10 +73,8 @@ public class ProductController {
 		product.setStock(prostock);
 		product.setCategoryId(catid);
 		product.setSupplierId(supid);
-        productDAO.addProduct(product);
+		 productDAO.addProduct(product);
         
-        /*Product product1=new Product();
-		m.addAttribute(product1);*/
     	String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
 		path=path+String.valueOf(product.getProductId())+".jpg";
 	    
@@ -111,6 +118,11 @@ public class ProductController {
 	{
 		Product product=productDAO.getProduct(productId);
 		
+		String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
+		path=path+String.valueOf(product.getProductId())+".jpg";
+	    File image=new File(path);
+		image.delete();
+		
 		productDAO.deleteProduct(product);
 		
 		List<Product> listProducts = productDAO.getProducts();
@@ -141,8 +153,8 @@ public class ProductController {
 	
 	@RequestMapping(value="/updateProductDB/{productId}",method=RequestMethod.POST)
 	public String updateProductDatabase(@PathVariable("productId") int proid,@RequestParam("proname") String proname,
-			@RequestParam("prodesc") String prodesc,@RequestParam("proprice") int proprice,@RequestParam("prostock") int prostock,
-			@RequestParam("categoryId") int catid,@RequestParam("supplierId") int supid,Model m)
+			@RequestParam("prodesc") String prodesc,@RequestParam("proprice") double proprice,@RequestParam("prostock") int prostock,
+			@RequestParam("categoryId") int catid,@RequestParam("supplierId") int supid,@RequestParam("pimage") MultipartFile pimage,Model m)
 	{
 		Product product=productDAO.getProduct(proid);
 		product.setProductName(proname);
@@ -151,6 +163,31 @@ public class ProductController {
 		product.setStock(prostock);
 		product.setCategoryId(catid);
 		product.setSupplierId(supid);
+		
+		if(!pimage.isEmpty())
+		{
+			String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
+			path=path+String.valueOf(product.getProductId())+".jpg";
+		    File oldimage=new File(path);
+			oldimage.delete();
+
+			File image=new File(path);
+			try {
+				byte[] buffer=pimage.getBytes();	
+				FileOutputStream fos=new FileOutputStream(image);
+				BufferedOutputStream bs=new BufferedOutputStream(fos);
+				bs.write(buffer);
+				bs.close();
+
+			}
+			
+			catch (Exception e)
+			{
+				System.out.println("Exception Arised:"+e);
+				e.printStackTrace();
+			}
+			
+		}
 		
 		productDAO.updateProduct(product);
 		

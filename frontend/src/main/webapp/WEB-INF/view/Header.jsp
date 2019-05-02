@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" id="navb">
   <div class="container-fluid" id="link">
     <div class="navbar-header">
       <a class="navbar-brand" href="#" id="hom">EGaming</a>

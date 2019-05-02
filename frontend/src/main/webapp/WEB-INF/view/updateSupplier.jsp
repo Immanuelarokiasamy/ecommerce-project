@@ -31,7 +31,7 @@
 </tr>
 </table>
 <div class="container">
-<table class="table table-bordered">
+<table class="table table-bordered" style="border-width:3px;border-color:black;">
 <tr style="background-color:black; color:white;">
 <td>Supplier ID</td>
 <td>Supplier Name</td>

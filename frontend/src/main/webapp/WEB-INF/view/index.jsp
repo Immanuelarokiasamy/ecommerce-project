@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Gaming</title>
+<title>EGaming</title>
 </head>
 <body>
 <%@ include file="Header.jsp"%>
