@@ -8,9 +8,10 @@
 </head>
 <body>
 <%@ include file="Header.jsp" %>
+<form method="post" action="<c:url value="/addCart/${product.productId}"/>">
 <table>
 <tr>
-<td style="text-transform:uppercase;">${product.productName}</td>
+<td style="text-transform:uppercase;" id="name">${product.productName}</td>
 </tr>
 <tr>
 <td  colspan="2" rowspan="2"><img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" style="width:200px; height:200px;"></td>
@@ -20,7 +21,11 @@
 <td>Price:${product.price}</td>
 </tr>
 <tr>
-<center><td><a href="#" class="btn btn-success btn-xs">Add to Cart</a></td></center>
+<td>
+<input type="submit" value="ADD TO CART">
+</td>
+</tr>
 </table>
+</form>
 </body>
 </html>

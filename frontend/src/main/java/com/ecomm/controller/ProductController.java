@@ -191,12 +191,17 @@ public class ProductController {
 		
 		productDAO.updateProduct(product);
 		
+		Category category=categoryDAO.getCategory(catid);
+		Supplier supplier=supplierDAO.getSupplier(supid);
+		
 		List<Product> listProducts = productDAO.getProducts();
 		m.addAttribute("listProducts", listProducts);
 		List<Category> listCategories=categoryDAO.getCategories();
 		m.addAttribute("listCategories",listCategories);
 		List<Supplier> listSuppliers = supplierDAO.getSuppliers();
 		m.addAttribute("listSuppliers", listSuppliers);
+		m.addAttribute("cat",category);
+		m.addAttribute("sup",supplier);
 		
 		return "Product";
 	}

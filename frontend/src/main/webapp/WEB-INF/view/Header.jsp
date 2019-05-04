@@ -28,8 +28,8 @@
       <li><a href="<c:url value="/ProductDisplay"/>" id="hom">Product</a></li>
     </ul> 
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" id="hom"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#" id="hom"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="<c:url value="/SignUp"/>" id="hom"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="<c:url value="/login"/>" id="hom"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul> 
 </div>
 </nav>

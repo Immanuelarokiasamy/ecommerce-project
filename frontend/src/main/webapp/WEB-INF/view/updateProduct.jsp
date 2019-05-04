@@ -22,6 +22,7 @@
 <td>Select Category:</td>
 <td><select required id="sel" name="categoryId">
 <option value="" disabled selected>Select</option>
+
 <c:forEach items="${listCategories}" var="category">
 <option value="${category.categoryId}">${category.categoryName}</option>
 </c:forEach>
