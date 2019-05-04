@@ -13,15 +13,21 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.ecomm.dao.CartDAO;
+import com.ecomm.dao.CartDAOImpl;
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.CategoryDAOImpl;
 import com.ecomm.dao.ProductDAO;
 import com.ecomm.dao.ProductDAOImpl;
 import com.ecomm.dao.SupplierDAO;
 import com.ecomm.dao.SupplierDAOImpl;
+import com.ecomm.dao.UserDAO;
+import com.ecomm.dao.UserDAOImpl;
+import com.ecomm.model.Cart;
 import com.ecomm.model.Category;
 import com.ecomm.model.Product;
 import com.ecomm.model.Supplier;
+import com.ecomm.model.User;
 
 @Configuration
 @EnableTransactionManagement
@@ -55,6 +61,8 @@ public SessionFactory getSessionFactory()
 	factory.addAnnotatedClass(Category.class);
 	factory.addAnnotatedClass(Supplier.class);
 	factory.addAnnotatedClass(Product.class);
+	factory.addAnnotatedClass(Cart.class);
+	factory.addAnnotatedClass(User.class);
 	System.out.println(">>>>>>SessionFactory Object created<<<<<<");
 
 	return factory.buildSessionFactory();
@@ -80,5 +88,15 @@ public SupplierDAO getSupplierDAO() {
 public ProductDAO getProductDAO() {
 	System.out.println("Product DAO Implementation");
 	return new ProductDAOImpl();
+}
+@Bean(name="cartDAO") 
+public CartDAO getCartDAO() {
+	System.out.println("Cart DAO Implementation");
+	return new CartDAOImpl();
+}
+@Bean(name="userDAO") 
+public UserDAO getUserDAO() {
+	System.out.println("User DAO Implementation");
+	return new UserDAOImpl();
 }
 }
