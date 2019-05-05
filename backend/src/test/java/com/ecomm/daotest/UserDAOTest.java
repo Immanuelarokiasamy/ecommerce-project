@@ -26,16 +26,15 @@ public class UserDAOTest {
 		
 		userDAO=(UserDAO)context.getBean("userDAO");
 	}
-    @Ignore
 	@Test
 	public void addUserTest()
 	{
 		User user=new User();
 		user.setMobileNo("1122334455");
-		user.setPassword("kalam");
-		user.setUsername("kalam");
-		user.setRole("ROLE_USER");
-		user.setEmail("user@google.com");
+		user.setPassword("imman");
+		user.setUsername("imman");
+		user.setRole("ROLE_ADMIN");
+		user.setEmail("imman@google.com");
 		assertTrue("Problem in User Insertion",userDAO.addUser(user));
 	}
     @Ignore
