@@ -13,9 +13,9 @@
 
 </security:http>
 
-<beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="encoder">
+<!-- <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="encoder">
 <beans:constructor-arg name="strength" value="12"/>
-</beans:bean>
+</beans:bean>  -->
 
 
 <security:authentication-manager>
@@ -23,7 +23,7 @@
 
 <security:authentication-provider>
 
-<password-encoder ref="encoder"/>
+<!-- <password-encoder ref="encoder"/> -->
 
 <security:jdbc-user-service authorities-by-username-query="select username, role from User where username =?" users-by-username-query="select username,password,enabled from User where username=?" data-source-ref="datasource"/>
 

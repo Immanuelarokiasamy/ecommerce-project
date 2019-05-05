@@ -49,7 +49,7 @@ public class UserController {
 	public String invalid(HttpSession Session)
 	{
 		Session.setAttribute("ErrorMessage","Invalid Credentials");
-		return "index";
+		return "login";
 	}
 	
 
