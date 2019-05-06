@@ -16,6 +16,7 @@ public class User {
 		private String password;
 	    private String mobileNo;
 	    private String email;
+	    private String address;
 	    private boolean enabled=true;
 	    private String role="ROLE_USER";
 		public int getUserId() {
@@ -59,5 +60,11 @@ public class User {
 		}
 		public void setRole(String role) {
 			this.role = role;
+		}
+		public String getAddress() {
+			return address;
+		}
+		public void setAddress(String address) {
+			this.address = address;
 		}
 }
