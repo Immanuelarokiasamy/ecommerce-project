@@ -25,6 +25,9 @@
 <input type="submit" value="ADD TO CART">
 </td>
 </tr>
+<tr>
+<td>${alert}</td>
+</tr>
 </table>
 </form>
 </body>

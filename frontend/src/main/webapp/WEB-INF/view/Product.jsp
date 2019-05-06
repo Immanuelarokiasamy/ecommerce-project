@@ -92,7 +92,7 @@
 <td>${product.stock}</td>
 <td>${product.categoryId}</td>
 <td>${product.supplierId}</td>
-<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="75px" height="75px"></td>
+<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" alt="image" width="75px" height="75px"></td>
 <td>
 <a href="<c:url value="/updateProduct/${product.productId}"/>" class="btn btn-success btn-xs">UPDATE</a>
 <a href="<c:url value="/deleteProduct/${product.productId}"/>" class="btn btn-danger btn-xs">DELETE</a>

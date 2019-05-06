@@ -21,10 +21,11 @@
 <tr>
 <td>Select Category:</td>
 <td><select required id="sel" name="categoryId">
-<option value="" disabled selected>Select</option>
-
+<option value="${cat.categoryId}">${cat.categoryName}</option>
 <c:forEach items="${listCategories}" var="category">
+<c:if test="${cat.categoryId!=category.categoryId}">
 <option value="${category.categoryId}">${category.categoryName}</option>
+</c:if>
 </c:forEach>
 </select>
 </td>
@@ -32,9 +33,11 @@
 <tr>
 <td>Select Supplier:</td>
 <td><select required id="sel" name="supplierId">
-<option value="" disabled selected>Select</option>
+<option value="${sup.supplierId}">${sup.supplierName}</option>
 <c:forEach items="${listSuppliers}" var="supplier">
+<c:if test="${sup.supplierId!=supplier.supplierId}">
 <option value="${supplier.supplierId}">${supplier.supplierName}</option>
+</c:if>
 </c:forEach>
 </select>
 </td>

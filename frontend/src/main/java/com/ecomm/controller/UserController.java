@@ -1,6 +1,7 @@
 package com.ecomm.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,16 +30,33 @@ public class UserController {
 	}
 	@RequestMapping(value="/addSignUp", method = RequestMethod.POST) 
 	public String displaySignUp(@RequestParam("username") String username, @RequestParam("password") String password,
-			@RequestParam("mobileNo") String mobileNo,@RequestParam("email") String email) {
+			@RequestParam("address") String address,@RequestParam("mobileNo") String mobileNo,
+			@RequestParam("email") String email,Model m) {
 		
+		boolean flag=false;
+		List<User> listUser=userDAO.getUser();
+		for(User user1:listUser) {
+			if(username.equals(user1.getUsername())) {
+				flag=true;
+				break;
+			}
+		}
+		
+		if(flag==false) {
 		User user=new User();
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setAddress(address);
 		user.setMobileNo(mobileNo);
 		user.setEmail(email);
 		userDAO.addUser(user);
+		return "login";
+		}
+		else {
+			m.addAttribute("alert","Username is already taken");
+		}
 		
-	return "login";
+	return "SignUp";
 	}
 	@RequestMapping(value="/login") 
 	public String displayLogin() {
@@ -48,7 +66,7 @@ public class UserController {
 	@RequestMapping(value="/login_failure")
 	public String invalid(HttpSession Session)
 	{
-		Session.setAttribute("ErrorMessage","Invalid Credentials");
+		Session.setAttribute("ErrorMessage","Username or password is wrong");
 		return "login";
 	}
 	
@@ -72,7 +90,7 @@ public class UserController {
 	     {
 	    	 session.setAttribute("username",username);
 			 session.setAttribute("SuccessMessage","Login Successful");
-	    	 page="Category";
+	    	 page="index";
 	    	 
 	    	 
 	    	
@@ -80,8 +98,9 @@ public class UserController {
 	     else 
 	     {
 	  
-	    page="Product";
+	    page="index";
 	    session.setAttribute("SuccessMessage","Login Successful");
+	    session.setAttribute("role","admin");
 	    	 break;
 	    }
 		}
@@ -111,7 +130,7 @@ public class UserController {
 	@RequestMapping(value="/perform_logout")
 	public ModelAndView logout(HttpServletRequest request,HttpSession session)
 	{
-		ModelAndView mv=new ModelAndView("index");
+		ModelAndView mv=new ModelAndView("login");
 		session.invalidate();
 		session=request.getSession(true);
 		mv.addObject("logoutMessage","you are successfully logged out");

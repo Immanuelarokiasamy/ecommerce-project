@@ -9,33 +9,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstarp.min.js"></script>
 <title>Cart</title>
+<style>
+#sel { width:50px; }
+</style>
 </head>
 <body>
 <%@ include file="Header.jsp"%>
-Hi ${cart.username}
 <div class="container">
-<table class="table table-bordered" style="border-width:3px;border-color:black;">
-<tr style="background-color:black; color:white;">
-<td>Serial No</td>
+<table class="table table-hover">
+<tr>
+<td>Product Image</td>
 <td>Product Name</td>
 <td>Product Price</td>
 <td>Quantity</td>
-<td>Product Image</td>
 <td>Operation</td>
 </tr>
 <c:forEach items="${listCarts}" var="cart">
 <tr>
-<td></td>
+<form method="post" action="<c:url value="/updatecart/${cart.cartId}"/>">
+<td><img src="<c:url value="/resources/images/${cart.productId}.jpg"/>" width="75px" height="75px"><br>
+<c:if test="${Cart.cartId==cart.cartId}">
+${alert}
+</c:if>
+</td>
 <td>${cart.productName}</td>
 <td>${cart.total}</td>
-<td>${cart.quantity}</td>
-<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="75px" height="75px"></td>
+<td><input name="quantity" id="sel" value="${cart.quantity}"></td>
 <td>
-<a href="<c:url value="/updatecart/${product.productId}"/>" class="btn btn-success btn-xs">REFRESH</a>
-<a href="<c:url value="/deletecart/${product.productId}"/>" class="btn btn-danger btn-xs">DELETE</a>
+<button type="submit">Check price</button></td>
+<td>
+<a href="<c:url value="/deletecart/${cart.cartId}"/>"><span class="glyphicon glyphicon-remove"></span></a>
 </td>
+</form>
 </tr>
 </c:forEach>
+<tr>
+<td></td>
+<td>GrandTotal<td>
+<td>${grandtotal}</td>
+<td></td>
+</tr>
 </table>
 </div>
 </body>

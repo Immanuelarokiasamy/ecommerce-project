@@ -13,10 +13,15 @@
 <tr>
 <td>User Name</td>
 <td><input name="username"></td>
+<td>${alert}</td>
 </tr>
 <tr>
 <td>Password</td>
 <td><input type="password" name="password"></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><input name="address"></td>
 </tr>
 <tr>
 <td>Mobile No</td>

@@ -73,9 +73,9 @@ public class ProductController {
 		product.setStock(prostock);
 		product.setCategoryId(catid);
 		product.setSupplierId(supid);
-		 productDAO.addProduct(product);
-        
-    	String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
+		productDAO.addProduct(product);
+		 
+        String path="E:/eclipse-workspace2/frontend/src/main/webapp/resources/images/";
 		path=path+String.valueOf(product.getProductId())+".jpg";
 	    
 		File image=new File(path);
@@ -102,7 +102,7 @@ public class ProductController {
 		{
 			System.out.println("Problem Occured in File Uploading");
 		}
-
+		
         List<Product> listProducts = productDAO.getProducts();
 		m.addAttribute("listProducts", listProducts);
 		List<Category> listCategories=categoryDAO.getCategories();
@@ -138,15 +138,20 @@ public class ProductController {
 	public String updateCategory(@PathVariable("productId") int productId,Model m)
 	{
 		Product product=productDAO.getProduct(productId);
-		
-		
 		List<Product> listProducts = productDAO.getProducts();
 		m.addAttribute("listProducts", listProducts);
+		m.addAttribute("product",product);
+		
+		Category category=categoryDAO.getCategory(product.getCategoryId());
 		List<Category> listCategories=categoryDAO.getCategories();
 		m.addAttribute("listCategories",listCategories);
+		m.addAttribute("cat",category);
+	
+		Supplier supplier=supplierDAO.getSupplier(product.getSupplierId());
 		List<Supplier> listSuppliers = supplierDAO.getSuppliers();
 		m.addAttribute("listSuppliers", listSuppliers);
-		m.addAttribute("product",product);
+		m.addAttribute("sup",supplier);
+	
 		
 		return "updateProduct";
 	}
@@ -200,8 +205,7 @@ public class ProductController {
 		m.addAttribute("listCategories",listCategories);
 		List<Supplier> listSuppliers = supplierDAO.getSuppliers();
 		m.addAttribute("listSuppliers", listSuppliers);
-		m.addAttribute("cat",category);
-		m.addAttribute("sup",supplier);
+	
 		
 		return "Product";
 	}
