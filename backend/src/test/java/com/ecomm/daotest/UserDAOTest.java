@@ -30,11 +30,13 @@ public class UserDAOTest {
 	public void addUserTest()
 	{
 		User user=new User();
+		user.setName("Admin");
 		user.setMobileNo("1122334455");
 		user.setPassword("imman");
 		user.setUsername("imman");
 		user.setRole("ROLE_ADMIN");
 		user.setEmail("imman@google.com");
+		user.setAddress("chennai");
 		assertTrue("Problem in User Insertion",userDAO.addUser(user));
 	}
     @Ignore

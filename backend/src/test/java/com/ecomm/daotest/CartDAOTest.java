@@ -1,5 +1,6 @@
 package com.ecomm.daotest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -23,11 +24,11 @@ public class CartDAOTest {
 		context.refresh();
 		cartDAO=(CartDAO)context.getBean("cartDAO");
 }
-	
+	@Ignore
 	@Test
 	public void addcarttest() {
 		Cart cart=new Cart();
-		cart.setProductId(1);
+		cart.setProductId(107);
 		cart.setTotal(2000);
 		cart.setQuantity(5);
 		cart.setProductName("hitman");
@@ -48,14 +49,25 @@ public class CartDAOTest {
 		Cart cart=cartDAO.getCart(110);
 		assertTrue("Problem in Deletion:",cartDAO.deleteCart(cart));
 	}
-	@Ignore
+	
 	@Test
 	public void updateCartTest()
 	{
-		Cart cart=cartDAO.getCart(111);
+		List<Cart> listCarts=cartDAO.getCarts("kalam");
+		int num=0;
+		for(Cart cart1:listCarts)
+		{
+				Cart cart2=cartDAO.getCart(cart1.getCartId());
+				cart2.setPaymentStatus("P");
+				cartDAO.updateCart(cart2);
+				num++;
+		}
+		/*Cart cart=cartDAO.getCart(111);
 		cart.setQuantity(6);
-		assertTrue("Problem in Updation",cartDAO.updateCart(cart));
+		assertTrue("Problem in Updation",cartDAO.updateCart(cart));*/
+		assertEquals(2,num);
 	}
+	@Ignore
 	@Test
 	public void listCartTest()
 	{

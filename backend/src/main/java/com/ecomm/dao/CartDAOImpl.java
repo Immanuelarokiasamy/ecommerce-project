@@ -64,11 +64,21 @@ public class CartDAOImpl implements CartDAO {
 	@Override
 	public List<Cart> getCarts(String username) {
 		Session session=sessionFactory.openSession();
-		Query query=session.createQuery("from Cart");
+		Query query = session.createQuery("from Cart where Username=:username and PaymentStatus='NP'");
+		query.setParameter("username",username);
 		List<Cart> listCart=(List<Cart>)query.list();
 		return listCart;
 	}
 
+	@Override
+	public List<Cart> getPaidCarts(String username) {
+		Session session=sessionFactory.openSession();
+		Query query = session.createQuery("from Cart where Username=:username and PaymentStatus='P'");
+		query.setParameter("username",username);
+		List<Cart> listCart=(List<Cart>)query.list();
+		return listCart;
+	}
+	
 	@Override
 	public Cart getCart(int cartId) {
 		Session session=sessionFactory.openSession();
@@ -76,5 +86,5 @@ public class CartDAOImpl implements CartDAO {
 		session.close();
 		return cart;
 	}
-
+	
 }

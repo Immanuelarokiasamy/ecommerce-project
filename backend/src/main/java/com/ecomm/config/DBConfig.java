@@ -17,6 +17,8 @@ import com.ecomm.dao.CartDAO;
 import com.ecomm.dao.CartDAOImpl;
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.CategoryDAOImpl;
+import com.ecomm.dao.OrderDetailDAO;
+import com.ecomm.dao.OrderDetailDAOImpl;
 import com.ecomm.dao.ProductDAO;
 import com.ecomm.dao.ProductDAOImpl;
 import com.ecomm.dao.SupplierDAO;
@@ -25,6 +27,7 @@ import com.ecomm.dao.UserDAO;
 import com.ecomm.dao.UserDAOImpl;
 import com.ecomm.model.Cart;
 import com.ecomm.model.Category;
+import com.ecomm.model.OrderDetail;
 import com.ecomm.model.Product;
 import com.ecomm.model.Supplier;
 import com.ecomm.model.User;
@@ -63,6 +66,7 @@ public SessionFactory getSessionFactory()
 	factory.addAnnotatedClass(Product.class);
 	factory.addAnnotatedClass(Cart.class);
 	factory.addAnnotatedClass(User.class);
+	factory.addAnnotatedClass(OrderDetail.class);
 	System.out.println(">>>>>>SessionFactory Object created<<<<<<");
 
 	return factory.buildSessionFactory();
@@ -98,5 +102,10 @@ public CartDAO getCartDAO() {
 public UserDAO getUserDAO() {
 	System.out.println("User DAO Implementation");
 	return new UserDAOImpl();
+}
+@Bean(name="orderDetailDAO") 
+public OrderDetailDAO getOrderDetailDAO() {
+	System.out.println("OrderDetail DAO Implementation");
+	return new OrderDetailDAOImpl();
 }
 }
