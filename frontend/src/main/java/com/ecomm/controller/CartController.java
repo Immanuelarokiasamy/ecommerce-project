@@ -40,7 +40,10 @@ public class CartController {
 		
 		boolean id=false;
 		String username=(String)session.getAttribute("username");
-		
+		System.out.println("username:"+username);
+        if(username==null) {
+        	return "login";
+        }
 		List<Cart> listCarts=cartDAO.getCarts(username);
 		for(Cart cart1: listCarts) {
 			if(proid==cart1.getProductId()) {

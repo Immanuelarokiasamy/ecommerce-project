@@ -22,7 +22,7 @@
     </div>
    <ul class="nav navbar-nav">
       <li><a href="<c:url value="/"/>" id="hom">Home</a></li>
-      <c:if test="${role=='admin'}">
+      <c:if test="${username=='Admin'}">
       <li><a href="<c:url value="/Category"/>" id="hom">Manage Category</a></li>
       <li><a href="<c:url value="/Supplier"/>" id="hom">Manage Supplier</a></li>
       <li><a href="<c:url value="/Product"/>" id="hom">Manage Product</a></li>
@@ -38,6 +38,7 @@
         <li><a href="<c:url value="/login"/>" id="hom"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </c:if>
         <c:if test="${not empty SuccessMessage}">
+        <li>Hi ${username}</li>
         <li><a href="<c:url value="/perform_logout"/>" id="hom"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </c:if>
       </ul> 

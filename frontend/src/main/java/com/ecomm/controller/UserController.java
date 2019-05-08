@@ -29,7 +29,7 @@ public class UserController {
 	return "SignUp";
 	}
 	@RequestMapping(value="/addSignUp", method = RequestMethod.POST) 
-	public String displaySignUp(@RequestParam("username") String username, @RequestParam("password") String password,
+	public String displaySignUp(@RequestParam("name") String name,@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("address") String address,@RequestParam("mobileNo") String mobileNo,
 			@RequestParam("email") String email,Model m) {
 		
@@ -44,6 +44,7 @@ public class UserController {
 		
 		if(flag==false) {
 		User user=new User();
+		user.setName(name);
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setAddress(address);
@@ -90,17 +91,13 @@ public class UserController {
 	     {
 	    	 session.setAttribute("username",username);
 			 session.setAttribute("SuccessMessage","Login Successful");
-	    	 page="index";
-	    	 
-	    	 
-	    	
-	     }
+	    	 page="index"; 
+	      }
 	     else 
-	     {
-	  
+	     {  
 	    page="index";
 	    session.setAttribute("SuccessMessage","Login Successful");
-	    session.setAttribute("role","admin");
+	    session.setAttribute("username","Admin");
 	    	 break;
 	    }
 		}
@@ -116,7 +113,7 @@ public class UserController {
 		if (userDAO.isValidUser(username,password)) 
 		{
 			message = "Successfully Logged in";
-			 mv = new ModelAndView("product");
+			 mv = new ModelAndView("index");
 		} else{
 			message="Please enter a valid username and password";
 			mv=new ModelAndView("Success");

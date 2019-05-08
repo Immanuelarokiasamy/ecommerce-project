@@ -49,6 +49,10 @@ ${alert}
 <td>${grandtotal}</td>
 <td></td>
 </tr>
+<tr>
+<td>
+<a href="<c:url value="/confirmorder"/>" class="btn btn-success">Proceed to Buy</a></td>
+</tr>
 </table>
 </div>
 </body>

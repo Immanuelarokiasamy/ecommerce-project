@@ -5,11 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SignUpPage</title>
+<style>
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ffffff;
+}
+</style>
 </head>
 <body>
 <%@ include file="Header.jsp"%>
+<center>
 <form method="post" action="<c:url value="/addSignUp"/>">
 <table>
+<tr>
+<td>Name</td>
+<td><input type="text" name="name"></td>
+</tr>
 <tr>
 <td>User Name</td>
 <td><input name="username"></td>
@@ -36,5 +46,6 @@
 </tr>
 </table>
 </form>
+</center>
 </body>
 </html>
